@@ -184,7 +184,7 @@ let
 
 in
   (x1 = x2 andalso x2 = x3 andalso x3 <> x4 andalso x4 = x5) orelse
-    (x1 <> x2 andalso x2 = x3 andalso x3 = x4 andalso x4 = x5)
+    (x1 <> x2 andalso x2 = x3 andalso x3 = x4 andalso x4 = x5) 
 end
 
 

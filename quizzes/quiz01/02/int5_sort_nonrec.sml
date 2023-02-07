@@ -60,13 +60,13 @@ let
     
 in
     if x1 > x2 then (x2, x1, x3, x4, x5) 
-    else (x1, x2,
+    else (x1, x2)
     if x2 > x3 then (x3, x2, x4, x5)
-    else (x2, x3,
+    else (x2, x3)
     if x3 > x4 then (x4, x3, x5)
-    else (x3, x4,
+    else (x3, x4)
     if x4 > x5 then (x5, x4)
-    else (x4, x5))))
+    else (x4, x5)
 
 end
 
