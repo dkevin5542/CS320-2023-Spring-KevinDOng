@@ -55,7 +55,22 @@ int5_sort_nr(xs: int5): int5 =
 Please Give your implementation as follows:
 *)
 
+let
+  val (x1, x2, x3, x4, x5) = xs
+    
+in
+    if x1 > x2 then (x2, x1, x3, x4, x5) 
+    else (x1, x2,
+    if x2 > x3 then (x3, x2, x4, x5)
+    else (x2, x3,
+    if x3 > x4 then (x4, x3, x5)
+    else (x3, x4,
+    if x4 > x5 then (x5, x4)
+    else (x4, x5))))
 
-(* ****** ****** *)
+end
+
+
+
 
 (* end of [CS320-2023-Spring-quiz01-int5_sort_nonrec.sml] *)

@@ -178,6 +178,18 @@ card5_fullhouse(cs: card5): bool =
 Please Give your implementation as follows:
 *)
 
-(* ****** ****** *)
+
+let
+  val (x1, x2, x3, x4, x5) = cs
+
+in
+  (x1 = x2 andalso x2 = x3 andalso x3 <> x4 andalso x4 = x5) orelse
+    (x1 <> x2 andalso x2 = x3 andalso x3 = x4 andalso x4 = x5)
+end
+
+
+
+ 
+
 
 (* end of [CS320-2023-Spring-quiz01-card5_fullhouse.sml] *)
