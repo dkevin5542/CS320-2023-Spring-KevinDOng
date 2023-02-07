@@ -181,10 +181,20 @@ Please Give your implementation as follows:
 
 let
   val (x1, x2, x3, x4, x5) = cs
+  val first = card_rank(x1)
+  val second = card_rank(x2)
+  val third = card_rank(x3)
+  val fourth = card_rank(x4)
+  val fifth = card_rank(x5)
+
+  val convert = (rank2int(first), rank2int(second), rank2int(third), rank2int(fourth), rank2int(fifth))
+  val (sorted1, sorted2, sorted3, sorted4, sorted5) = int5_sort(convert)
 
 in
-  (x1 = x2 andalso x2 = x3 andalso x3 <> x4 andalso x4 = x5) orelse
-    (x1 <> x2 andalso x2 = x3 andalso x3 = x4 andalso x4 = x5) 
+  (sorted1 = sorted2 andalso sorted2 = sorted3 andalso sorted4 = sorted5) orelse
+  (sorted1 = sorted2 andalso sorted3 = sorted4 andalso sorted3 = sorted5)
+   
+  
 end
 
 
