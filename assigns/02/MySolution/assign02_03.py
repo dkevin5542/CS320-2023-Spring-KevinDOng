@@ -41,6 +41,8 @@ def mylist_mergesort(xs):
         (ys, zs) = split(xs.get_cons2().get_cons2())
         return merge(mylist_mergesort(mylist_cons(xs.get_cons1(), ys)), mylist_mergesort(mylist_cons(xs.get_cons2().get_cons1(), zs)))
 
+
+
     
 
         
