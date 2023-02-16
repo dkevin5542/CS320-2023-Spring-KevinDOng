@@ -61,6 +61,6 @@ fun list_longest_ascend(xs: int list): int list
 //
 *)
 
-(* ****** ****** *)
+
 
 (* end of [CS320-2023-Spring-assign03.sml] *)
