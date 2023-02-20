@@ -118,7 +118,7 @@ val it = () : unit
 Assign03-03-test passed!
 val it = () : unit
 
-Test 4:
+Test 4 case:
 [opening assign03-04-test.sml]
 [opening ./../../../mysmlib/mysmlib-cls.sml]
 type 'a optn = 'a option
