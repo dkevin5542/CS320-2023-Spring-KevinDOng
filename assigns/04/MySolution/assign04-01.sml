@@ -27,6 +27,13 @@ in
 end
 *)
 
-(* ****** ****** *)
+fun isPrime(n0: int): bool =
+  if n0 < 2 then false 
+  else
+  let
+    bindings
+  in
+    body
+  end
 
 (* end of [CS320-2023-Spring-assign04-01.sml] *)
