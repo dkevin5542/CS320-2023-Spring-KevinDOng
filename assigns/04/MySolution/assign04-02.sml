@@ -37,6 +37,5 @@ list_subsets =
 fn(xs: 'a list) => ...
 *)
 
-(* ****** ****** *)
 
 (* end of [CS320-2023-Spring-assign04-02.sml] *)

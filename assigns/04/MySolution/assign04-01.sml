@@ -31,9 +31,9 @@ fun isPrime(n0: int): bool =
   if n0 < 2 then false 
   else
   let
-    bindings
+    val helper = fn(x) => if (x + 2) * (x +2) > n0 then true else n0 mod (x + 2) <> 0
   in
-    body
+    int1_forall(n0, helper)
   end
 
 (* end of [CS320-2023-Spring-assign04-01.sml] *)

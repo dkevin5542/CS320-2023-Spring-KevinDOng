@@ -287,11 +287,7 @@ int1_foreach
 (* ****** ****** *)
 
 fun
-forall_to_foreach
-( forall
-: ('xs * ('x0 -> bool)) -> bool
-)
-: ('xs * ('x0 -> unit)) -> unit =
+forall_to_foreach(forall: ('xs * ('x0 -> bool)) -> bool): ('xs * ('x0 -> unit)) -> unit =
 fn(xs: 'xs, work: 'x0 -> unit) =>
 let
 val _ =
