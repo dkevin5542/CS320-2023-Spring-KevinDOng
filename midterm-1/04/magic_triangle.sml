@@ -65,5 +65,19 @@ magic_triangle (n : int) : int list list = ...
 (* ****** ****** *)
 
 fun magic_triangle (n : int) : int list list =
-  
+  let
+    fun create_row (past_row: int list) : int list =
+      let
+        fun create_num(row: int list, index: int): int =
+          if index = 0 orelse index = list_length(row) then 1
+
+      in
+        1 :: map2 create_num (past_row, tl past_row) @ [1]
+      end
+    fun helper(i: int, pos: int list list): int list list =
+      if i = 0 then list_reverse(pos)
+      else helper(i - 1, create_row(hd(pos) :: pos))
+  in
+    helper(n, [[1]])
+  end
 (* end of [CS320-2023-Spring-midterm1-magic_triangle.sml] *)

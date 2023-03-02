@@ -37,11 +37,11 @@ fun list_pairing (xs: 'a list): ('a * 'a) list * 'a option =
       val x = list_length(xs)
       fun helper(list2, pos) =
       case list2 of
-         [] => (rev(pos), NONE)
-       | [x] => (rev(pos), SOME(x))
+         [] => (list_reverse(pos), NONE)
+       | [x] => (list_reverse(pos), SOME(x))
        | x2::xs' =>
         let
-          val xlast = hd (rev(xs'))
+          val xlast = hd (list_reverse(xs'))
           val pos' = (x2, xlast) :: pos
         in
           helper(xs', pos')

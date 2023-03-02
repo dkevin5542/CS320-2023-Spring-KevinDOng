@@ -38,7 +38,7 @@ list_averages(xs: real list): real list = ...
 
 fun list_averages(xs: real list): real list = 
     let
-      fun helper(pos, i, [], _) = rev(pos)
+      fun helper(pos, i, [], _) = list_reverse(pos)
         | helper(pos, i, x::xs, total) =
             let
               val total = total + x
