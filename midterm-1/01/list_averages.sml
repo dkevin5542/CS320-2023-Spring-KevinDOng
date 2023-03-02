@@ -36,4 +36,18 @@ list_averages(xs: real list): real list = ...
 *)
 (* ****** ****** *)
 
+fun list_averages(xs: real list): real list = 
+    let
+      fun helper(pos, i, [], _) = rev(pos)
+        | helper(pos, i, x::xs, total) =
+            let
+              val total = total + x
+              val avg = total / int2real(i + 1)
+            in
+              helper(avg::pos, i + 1, xs, total)
+            end
+    in
+      helper([], 0, xs, 0.0)
+    end
+
 (* end of [CS320-2023-Spring-midterm1-list_averages.sml] *)

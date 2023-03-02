@@ -33,6 +33,16 @@ fun
 list_nchoose2(xs: int list): (int * int) list = ...
 *)
 
-(* ****** ****** *)
+fun list_nchoose2 xs =
+    let
+      fun helper [] = []
+        |helper (y::ys) = map(fn x => if x <= y then (x,y) else (y,x)) ys @ helper ys
+      val set = helper xs
+      fun tester [] t = t
+        |tester (x::xs) t = tester xs (if list_exists(t, (fn y => x = y)) then t else x::t)
+    in
+      tester set []
+    end
+    
 
 (* end of [CS320-2023-Spring-midterm1-list_nchoose2.sml] *)

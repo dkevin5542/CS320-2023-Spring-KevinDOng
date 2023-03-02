@@ -32,4 +32,22 @@ list_pairing
 *)
 (* ****** ****** *)
 
+fun list_pairing (xs: 'a list): ('a * 'a) list * 'a option =
+    let
+      val x = list_length(xs)
+      fun helper(list2, pos) =
+      case list2 of
+         [] => (rev(pos), NONE)
+       | [x] => (rev(pos), SOME(x))
+       | x2::xs' =>
+        let
+          val xlast = hd (rev(xs'))
+          val pos' = (x2, xlast) :: pos
+        in
+          helper(xs', pos')
+        end
+    in
+      helper(xs, [])
+    end
+
 (* end of [CS320-2023-Spring-midterm1-list_pairing.sml] *)

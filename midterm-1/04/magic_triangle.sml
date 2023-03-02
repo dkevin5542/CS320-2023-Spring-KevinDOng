@@ -64,4 +64,6 @@ magic_triangle (n : int) : int list list = ...
 
 (* ****** ****** *)
 
+fun magic_triangle (n : int) : int list list =
+  
 (* end of [CS320-2023-Spring-midterm1-magic_triangle.sml] *)
