@@ -33,7 +33,7 @@ fun
 list_nchoose2(xs: int list): (int * int) list = ...
 *)
 
-fun list_nchoose2 xs =
+fun list_nchoose2(xs: int list): (int * int) list =
     let
       fun helper [] = []
         |helper (y::ys) = map(fn x => if x <= y then (x,y) else (y,x)) ys @ helper ys

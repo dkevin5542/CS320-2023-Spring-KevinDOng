@@ -112,7 +112,13 @@ val
 bintr_balanced_nonrec = fn(t0: 'a bintr) => ...
 *)
 
-(* ****** ****** *)
+val
+bintr_balanced_nonrec = fn(t0: 'a bintr) =>
+let
+  bindings
+in
+  body
+end
 
 (*
 Some testing code:
