@@ -791,6 +791,27 @@ end (* end-of-[stream_tabulate(n0, fopr)] *)
 
 (* ****** ****** *)
 
+val
+string_streamize =
+fn(cs) =>
+stream_tabulate
+(String.size(cs), fn i => String.sub(cs, i))
+
+(* ****** ****** *)
+
+val
+array_streamize =
+fn(arr) =>
+stream_tabulate
+(Array.length(arr), fn i => Array.sub(arr, i))
+val
+vector_streamize =
+fn(vec) =>
+stream_tabulate
+(Vector.length(vec), fn i => Vector.sub(vec, i))
+
+(* ****** ****** *)
+
 fun
 stream_forall
 (fxs, test) =
@@ -840,6 +861,17 @@ case fxs() of
 in
   auxmain(fxs)
 end (* end-of-[stream_foreach(fxs, work)] *)
+
+(* ****** ****** *)
+
+fun
+stream_get_at
+( fxs
+: 'a stream, i0: int): 'a =
+(
+foreach_to_get_at(stream_foreach)(fxs, i0))
+
+(* ****** ****** *)
 
 fun
 stream_iforeach
@@ -892,7 +924,8 @@ strcon_nil =>
 strcon_nil
 |
 strcon_cons(x1, fxs) =>
-strcon_cons(fopr(x1), stream_make_map(fxs, fopr))
+strcon_cons
+  (fopr(x1), stream_make_map(fxs, fopr))
 )
 
 (* ****** ****** *)
