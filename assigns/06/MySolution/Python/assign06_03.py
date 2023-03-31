@@ -33,7 +33,7 @@ def board_safety_one(bd, i0):
         return pi != pj and abs(i0-j0) != abs(pi-pj)
     return int1_forall(i0, helper)
 
-def post_checker(bd,i0,j0):
+def poss_checker(bd,i0,j0):
     def helper(k0):
         pk = bd[k0]
         return pk != j0 and abs(i0-k0) != abs(j0-pk)
@@ -47,7 +47,7 @@ def board(bd,i0,j0):
 def children(node, size, q):
     nqueen_curr = nqueen(node)
     def helper(j):
-        if post_checker(node,nqueen_curr,j):
+        if poss_checker(node,nqueen_curr,j):
             temp_bd = board(node,nqueen_curr,j)
             q.put(temp_bd)
     int1_foreach(size + 1, lambda i: () if i == 0 else helper(i))
