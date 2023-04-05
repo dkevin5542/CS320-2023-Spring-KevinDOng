@@ -17,11 +17,11 @@ fun stream_dupremov (fxs: int stream) =
                         helper x xs
                     else
                         Cons(x, fn () => helper x xs)
-                | _ => "Empty"
+                | _ => raise Fail "Empty"
     in
         case fxs of
             Cons(x, xs) => Cons(x, fn () => helper x xs)
-            | _ => "Empty"
+            | _ => raise Fail "Empty"
     end
 
 (* end of [CS320-2023-Spring-quizzes-quiz04-02.sml] *)
