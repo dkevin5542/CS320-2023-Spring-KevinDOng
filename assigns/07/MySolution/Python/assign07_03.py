@@ -38,5 +38,16 @@ def doublet_bfs_test(w1, w2):
     it returns a path connecting w1 and w2 that attests to the
     two words forming a doublet.
     """
-    raise NotImplementedError
+    def child(node):
+        #  takes a word node as input and returns a list of its neighbors
+        n = word_neighbors(node)
+        return foreach_to_filter_fnlist(fnlist_foreach)(n, lambda word: word_is_legal(word))
+
+    helper = stream_make_filter(gpath_bfs([w1], child), lambda path: path[-1] == w2)()
+    if helper.get_ctag() == 0:
+        # empty if no path was found
+        return None
+    else:
+        # returns the first element of the stream, which is the shortest path between w1 and w2.
+        return helper.get_cons1()
 ####################################################
