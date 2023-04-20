@@ -1,6 +1,8 @@
 (* ****** ****** *)
 
 use "./../../mysmlib/mysmlib-cls.sml";
+open ListPair;
+
 
 (* ****** ****** *)
 
@@ -26,6 +28,20 @@ fun
 perm_capture_231(xs: int list): bool = ...
 *)
 
-(* ****** ****** *)
+
+exception True
+
+fun perm_capture_231(xs: int list): bool = 
+let
+    val length = list_length(xs)
+in
+    let
+        val _ = foreach_to_iforeach(list_foreach)(xs,fn(i,x) => if (i >= length -2) then () else if (list_get_at(xs,i+2) < x andalso x < list_get_at(xs,i+1) ) then raise True else ()
+        )
+    in
+        false
+    end handle True => true
+end
+
 
 (* end of [CS320-2023-Spring-midterm2-05.sml] *)

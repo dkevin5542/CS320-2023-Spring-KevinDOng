@@ -22,14 +22,24 @@ Then we have ln2 = stream_evaluate(fxs, 1.0) // see Assign06-01
 //
 *)
 
-(* ****** ****** *)
+fun power_real(x: real, n: int) : real =
+    if n = 0 then 1.0
+    else
+        if n mod 2 = 0 then power_real(x * x, n div 2)
+        else x * power_real(x * x, n div 2)
 
-(*
-fun
-stream_evaluate
-(fxs: real stream, x0: real): real stream = ...
-*)
+fun stream_evaluate(fxs: real stream, x0: real): real stream =
+    let
+        fun helper(fxs, xn, n) = fn() => case fxs() of strcon_nil => strcon_nil |strcon_cons(a, fxs') =>
+          let
+              val x1 = xn + a * power_real(x0 ,n)
+          in
+              strcon_cons(x1, helper(fxs', x1, n+1))
+          end
+    in
+        helper(fxs, 0.0, 0)
+    end
 
-(* ****** ****** *)
+
 
 (* end of [CS320-2023-Spring-midterm2-01.sml] *)
