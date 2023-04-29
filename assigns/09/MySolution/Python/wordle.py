@@ -28,22 +28,22 @@ wordle_hint(w1, w2) =
 """
 ########################################################################
 def wordle_hint(w1, w2):
-    dennis = []
-    contains = []
-    how_many = []
+    word = []
+    have = []
+    amount = []
     for tup in zip(w1,w2):
         w_1, ch = tup
-        if not(ch in contains):
-            contains.append(ch)
-            how_many.append(w1.count(ch))
-        a = contains.index(ch)
+        if not(ch in have):
+            have.append(ch)
+            amount.append(w1.count(ch))
+        a = have.index(ch)
         if (w_1 == ch):
-            dennis.append((1, ch))
-            how_many[a] -= 1
+            word.append((1, ch))
+            amount[a] -= 1
         else:
-            if (how_many[a] == 0):
-                dennis.append((0, ch))
+            if (amount[a] == 0):
+                word.append((0, ch))
             else:
-                dennis.append((2, ch))
-    return dennis
+                word.append((2, ch))
+    return word
 ########################################################################

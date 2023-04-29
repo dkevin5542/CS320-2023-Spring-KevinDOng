@@ -29,6 +29,9 @@ myhint6 = \
     [(1, 'f'), (1, 'r'), (1, 'i'), (1, 'e'), (1, 'n'), (1, 'd')]
 myhints = \
     [myhint0, myhint1, myhint2, myhint3, myhint4, myhint5, myhint6]
+myguess = \
+    wordle_guess(myhints)
+print("myguess = ", myguess)
 assert "friend" == wordle_guess(myhints)
 ######################################################
 myhints = \
