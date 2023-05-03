@@ -5,6 +5,7 @@ import sys
 sys.path.append('./../../../05')
 sys.path.append('./../../../../mypylib')
 from mypylib_cls import *
+sys.setrecursionlimit(10000)
 ####################################################
 """
 HX-2023-03-14: 30 points
@@ -166,23 +167,31 @@ def image_seam_carving_1col_color(image):
     hh = image.height
     energy = image_edges_color(image)
     ################################################
-    def cenergy(i0, j0, total={}):
-        
-        if (i0, j0) in total:
-            return total[(i0, j0)]
-        if i0 == 0:
-            total[(i0, j0)] = imgvec.image_get_pixel(energy, i0, j0)
+    cenergy_table = {}
+    def cenergy(i0, j0):
+        if i0 in cenergy_table:
+            if j0 in cenergy_table[i0]:
+                return cenergy_table[i0][j0] 
+            else:
+                result = cenergy_rec(i0, j0)
+                cenergy_table[i0][j0] = result
+                return result
         else:
-            x=float('inf')
-            y=float('inf')
-            z=float('inf')
-            if j0 > 0:
-                y = cenergy(i0-1, j0-1, total)
-            if j0 < ww-1:
-                z = cenergy(i0-1, j0+1, total)
-            diag = cenergy(i0-1, j0, total)
-            total[(i0, j0)] = imgvec.image_get_pixel(energy, i0, j0) + min(x, y, z, diag)
-        return total[(i0, j0)]
+            result = cenergy_rec(i0, j0)
+            cenergy_table[i0] = {j0: result}
+            return result
+    def cenergy_rec(i0, j0):
+        evalue = imgvec.image_get_pixel(energy, i0, j0)
+        if i0 <= 0:
+            return  evalue
+        else:
+            if j0 <= 0:
+                return evalue + min(cenergy(i0-1, j0), cenergy(i0-1, j0+1))
+            elif j0 >= ww-1:
+                return evalue + min(cenergy(i0-1, j0-1), cenergy(i0-1, j0))
+            else:
+                return evalue + min(cenergy(i0-1, j0-1), cenergy(i0-1, j0), cenergy(i0-1, j0+1)) 
+    
     ################################################
     jmin0 = 0
     cmin0 = cenergy(hh-1, 0)
@@ -223,8 +232,6 @@ def image_seam_carving_1col_color(image):
     return \
         imgvec.image_make_pylist\
         (hh, ww-1, imgvec.image_i2filter_pylist(image, lambda i0, j0, _: jminall(i0) != j0))
-
-
 
 ####################################################
 # save_color_image(imgvec.image_trans_090l(balloons), "OUTPUT/balloons_090l.png")
