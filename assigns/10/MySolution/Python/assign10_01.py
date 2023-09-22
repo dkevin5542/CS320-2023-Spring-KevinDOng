@@ -28,6 +28,7 @@ def load_color_image(filename):
     Invoked as, for example:
        i = load_color_image("test_images/cat.png")
     """
+    
     with open(filename, "rb") as img_handle:
         img = Image.open(img_handle)
         img = img.convert("RGB")  # in case we were given a greyscale image
@@ -244,3 +245,5 @@ def image_seam_carving_1col_color(image):
 # save_color_image(image_seam_carving_color(balloons_090l, 50), "OUTPUT/balloons_090l_seam_carving_50.png")
 # save_color_image(image_seam_carving_color(balloons_090r, 50), "OUTPUT/balloons_090r_seam_carving_50.png")
 ####################################################
+
+#Hello

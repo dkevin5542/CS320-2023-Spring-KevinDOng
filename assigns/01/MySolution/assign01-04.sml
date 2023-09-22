@@ -13,3 +13,5 @@ fun str2int_opt (cs : string): int option =
     if cs = "" orelse checkNum(cs, 0) = false then NONE
     else convert(0,0)
   end;
+
+

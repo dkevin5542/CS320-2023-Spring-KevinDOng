@@ -15,4 +15,8 @@ fun xlist_remove_reverse(xs: 'a xlist): 'a xlist =
      | xlist_append(xs, ys) => xlist_append(xlist_remove_reverse(ys), xlist_remove_reverse(xs))
      | xlist_reverse(xs) => xlist_reverse(xlist_remove_reverse(xs))
 
+   
+
+
+
 
